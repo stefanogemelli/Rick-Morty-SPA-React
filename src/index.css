@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('./images/bg1.jpeg');
+  background-image: url('./images/bg9.jpg');
   background-size: cover;
   background-attachment: fixed;
 }
@@ -14,3 +14,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* 
+colores:
+
+_SearchBar
+  celeste: #a8d5ff
+  fucsia:  #4d0080b5
+
+_Card
+  rosado:  #b95cd7
+
+*/
