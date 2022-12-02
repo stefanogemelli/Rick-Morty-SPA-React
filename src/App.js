@@ -1,8 +1,11 @@
 import './App.css'
-import Cards from './components/Cards/Cards.jsx'
 import styled from 'styled-components'
+import Cards from './components/Cards/Cards.jsx'
 import NavBar from './components/NavBar/NavBar'
-import { useState } from 'react'
+import About from './components/About/About'
+import Detail from './components/Detail/Detail'
+import React, { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 
 
 const DivApp = styled.div`
@@ -38,14 +41,20 @@ function App() {
 
   return (
     <DivApp style={{ padding: '25px' }}>
-      <NavBar
-        onSearch={onSearch}
-      />
-      <Cards
-        characters={characters}
-        onClose={onClose}
-      />
-    </DivApp>
+
+      <NavBar onSearch={onSearch} />
+
+      <Routes>
+        <Route path='/home' element={<Cards characters={characters} onClose={onClose} />}> </Route>
+
+        <Route path='/about' element={<About />} ></Route>
+
+        <Route path='/detail/:detailId' element={<Detail />} ></Route>
+
+      </Routes>
+
+
+    </DivApp >
   )
 }
 
