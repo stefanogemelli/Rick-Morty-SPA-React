@@ -1,14 +1,46 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 
-const Form = styled.form`
+
+export default function SearchBar({ onSearch }) {
+   const [id, setId] = useState("")
+
+   const handleChange = (e) => {
+      setId(e.target.value)
+   }
+
+   const handleSubmit = (e) => {
+      e.preventDefault()
+      onSearch(id)
+      setId("")
+   }
+
+   return (
+      <DivContainer>
+
+      <Form onSubmit={handleSubmit}>
+         <Input onChange={handleChange} type="text" placeholder="Ingresar Id" value={id} />
+         <Button><span>Agregar</span></Button>
+      </Form>
+      </DivContainer>
+   );
+}
+const DivContainer = styled.div`
+   /* border: 2px solid white; */
    margin-top: 2em;
-   margin-bottom: 3em;
+   width:60%;
+   display: flex;
+   justify-content: flex-end;
+`
+
+const Form = styled.form`
    display: flex;
    padding: 1em 1.5em;
    border-radius: 5px;
    border: 3px solid #4d0080b5;
    box-shadow: 0px 0px 10px #a8d5ff;
+   width: fit-content;
+
 `
 
 const Input = styled.input`
@@ -19,10 +51,10 @@ const Input = styled.input`
    outline: none;
    border: none;
    &::placeholder {
-     background-color: #4d0080b5;
-     color: #a8d5ff;
-     padding: 5px;
-     width: 95%;
+      background-color: #4d0080b5;
+      color: #a8d5ff;
+      padding: 5px;
+      width: 95%;
    }
    &:active{
       background-color:#a8d5ff;
@@ -87,24 +119,3 @@ const Button = styled.button`
       }
    }
 `
-
-export default function SearchBar({ onSearch }) {
-   const [id, setId] = useState("")
-
-   const handleChange = (e) => {
-      setId(e.target.value)
-   }
-
-   const handleSubmit = (e) => {
-      e.preventDefault()
-      onSearch(id)
-      e.target.value = ""
-   }
-
-   return (
-      <Form onSubmit={handleSubmit}>
-         <Input onChange={handleChange} type="text" placeholder="Ingresar Id" />
-         <Button><span>Agregar</span></Button>
-      </Form>
-   );
-}

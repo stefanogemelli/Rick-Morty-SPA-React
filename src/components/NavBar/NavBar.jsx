@@ -1,27 +1,52 @@
 import SearchBar from "../SearchBar/SearchBar";
 import styled from 'styled-components'
 import { NavLink } from "react-router-dom";
-
-const Nav = styled.nav`
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 20%;
-`
+import s from './styles.module.css'
 
 
-export default function NavBar({ onSearch }) {
+
+export default function NavBar({ onSearch, logout}) {
 
   // console.log(onSearch)
   return (
 
     <Nav>
-      <NavLink to="/home">Home</NavLink>
-      <NavLink to="/about">About</NavLink>
+      <DivLinks>
+        <DivNavLinks>
+          <NavLink to="/home" className={s.navLink}>Home</NavLink>
+          <NavLink to="/about" className={s.navLink}>About</NavLink>
+        </DivNavLinks>
+        <Span onClick={logout}>Logout</Span>
+      </DivLinks>
 
       <SearchBar onSearch={onSearch} />
-
     </Nav>
-
 
   )
 }
+
+const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-right: 20%;
+  align-items:center;
+  padding: 2em;
+  /* position: absolute; */
+`
+const DivLinks = styled.div`
+  width: 300px;
+  display: flex; 
+  justify-content: space-between;
+`
+const DivNavLinks = styled.div`
+  width: 150px;
+  font-size:1.4em;
+  display:flex;
+  justify-content: space-between;
+
+`
+const Span = styled.span`
+  align-self: flex-end;
+  font-size:1.2em;
+`
