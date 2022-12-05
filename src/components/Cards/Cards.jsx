@@ -2,10 +2,12 @@ import Card from '.././Card/Card';
 import styled from 'styled-components';
 
 const Div = styled.div`
-   display: flex;
-   flex-wrap: wrap;
-   align-items: center;
-   justify-content: space-evenly;
+margin-top: 50px;
+   display: grid;
+   grid-template-columns: repeat(4, 400px);
+   justify-items: center;
+   row-gap: 15px;
+   justify-content: center;
 `
 
 

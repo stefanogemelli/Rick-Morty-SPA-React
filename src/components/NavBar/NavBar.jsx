@@ -35,9 +35,9 @@ const Nav = styled.nav`
   /* position: absolute; */
 `
 const DivLinks = styled.div`
-  width: 300px;
+  width: 100%;
   display: flex; 
-  justify-content: space-between;
+  justify-content: space-around;
 `
 const DivNavLinks = styled.div`
   width: 150px;

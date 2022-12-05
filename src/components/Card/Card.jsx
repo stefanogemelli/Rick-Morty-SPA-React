@@ -10,16 +10,16 @@ export default function Card({ info, onClose }) {
          <ButtonCard onClick={() => onClose(info.id)}>X</ButtonCard>
          <DivImg>
             <img src={info.image} alt={info.name} />
-            <TitleBg>
-               <H2Name>{info.name}</H2Name>
-            </TitleBg>
+            <BgDark>
+               <Link to={`/detail/${info.id}`} >
+               <Span>Details...</Span>  
+               </Link>
+            </BgDark>
          </DivImg>
+               <H2Name>{info.name}</H2Name>
          <H2Normal>{info.species}</H2Normal>
          <H2Normal>{info.gender}</H2Normal>
 
-         <Link to={`/detail/${info.id}`} >
-            <Span>Más Info...</Span>
-         </Link>
 
       </DivCard>
    );
@@ -35,32 +35,38 @@ const DivCard = styled.div`
    border-radius: 10px;
    background: #46006661;
    backdrop-filter: blur(15px);
-   box-shadow: 0px 0px 10px 1px #573784;
+   /* box-shadow: 0px 0px 10px 1px #573784; */
    display: flex;
    flex-direction: column;
    overflow: hidden;
+   transition: .1s ease-in-out;
    &:hover{
-      /* ButtonCard */
+   box-shadow: 0px 0px 7px 3px #a8d5ff;
    }
 `
 const ButtonCard = styled.button`
    z-index:100;
-   border-radius: 3px 7px 3px 3px;
+   border-radius: 3px;
    align-self: flex-end;
    background-color: #BE24F0;
-   width: 25px;
+   width: 30px;
    color: #a8d5ff;
    border: 2px solid #a8d5ff;
    font-weight: 300;
    font-size: 1.2em;
    position: absolute;
-   top:1px;
-   right:1px;
+   top:-30px;
+   left:50%;
+   transform: translateX(-50%);
    transition: .1s ease-in-out;
+   cursor:pointer;
    &:hover{
       border-color: #BE24F0;
       color:#BE24F0;
       background-color:#a8d5ff;
+   }
+   ${DivCard}:hover & {
+      top:1px;
    }
 `
 const DivImg = styled.div`
@@ -69,18 +75,24 @@ const DivImg = styled.div`
    display: flex;
    flex-direction: column;
    margin-bottom: 10px;
+   overflow: hidden;
+
 `
-const TitleBg = styled.div`
-   text-align: center;
+const BgDark = styled.div`
    position: absolute;
    width: 100%;
-   bottom: 0;
+   height: 2.2em;
+   bottom: -2.2em;
    background-color: #000000bc;
+   transition: .1s ease-in-out;
+   ${DivCard}:hover &{
+      bottom:0;
+   }
 `
 const H2Name = styled.h2`
    margin: 0;
    align-self:center;
-   color: #b95cd7;
+   color: #a8d5ff;
    font-weight: 800;
    font-size: 1.8em;
    text-shadow: 0px 0px 2px #330056;
@@ -96,13 +108,26 @@ const H2Normal = styled.h2`
    text-shadow: 0px 0px 2px white;
 `
 const Span = styled.span`
+   width:100%;
    font-weight:400;
-   font-size:1.2em;
+   font-size:1.3em;
    display: inline-block;
    color: #a8d5ff;
-   text-shadow: 0px 0px 1px #4d0080b5;
+   background-color: #4d0080;
+   border: 2px solid #a8d5ff;
+   border-radius: 3px;
+   padding: 3px;
+   position:absolute;
+   bottom: -30px;
+   left: 50%;
+   transform: translateX(-50%);
+   transition: .1s ease-in-out;
    &:hover{
-      color: #4d0080b5;
-      text-shadow: 0px 0px 1px #a8d5ff;
+      color: #4d0080;
+      border-color: #4d0080;
+      background-color: #a8d5ff;
+   }
+   ${DivCard}:hover &{
+      bottom: 4px;
    }
 `

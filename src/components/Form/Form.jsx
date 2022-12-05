@@ -41,6 +41,7 @@ export default class Form extends React.Component {
     return (
       <div className={s.divForm}>
         <form onSubmit={this.handleSubmit} className={s.form}>
+          <div className={s.logo} ></div>
           <label className={s.label}>User</label>
           <input
             onChange={this.handleInputChange}
@@ -48,6 +49,7 @@ export default class Form extends React.Component {
             name="username"
             type="text"
             value={this.state.username}
+            autoComplete="none"
           />
           <span className={`${s.span} ${this.state.errors.username ? s.visible : null }`}>Ingrese un email válido</span>
 
@@ -59,6 +61,8 @@ export default class Form extends React.Component {
             name="password"
             type="password"
             value={this.state.password}
+            autoComplete="none"
+
           />
           <span className={`${s.span} ${this.state.errors.password ? s.visible : null }`}>La contraseña debe contener al menos 1 mayúscula, 1 minúscula, 1 numero y entre 6 y 10 caracteres</span>
 

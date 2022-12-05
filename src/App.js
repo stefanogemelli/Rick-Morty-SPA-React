@@ -6,6 +6,7 @@ import Detail from './components/Detail/Detail'
 import Form from './components/Form/Form'
 import React, { useState, useEffect } from 'react'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
+// import img from "./images/bgDetail.jpg"
 
 
 const DivApp = styled.div`
@@ -14,7 +15,8 @@ const DivApp = styled.div`
   box-sizing: border-box;
   text-align: center;
   position: relative;
-`
+  `
+/* background-image: url(${img}) */
 
 function App() {
   const [characters, setCharacters] = useState([])

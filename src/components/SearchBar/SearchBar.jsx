@@ -1,17 +1,35 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 
+function randomCharacterId(arrRand){
+   return Math.floor(Math.random()*(arrRand.length))
+}
+const arr= []
+for(let i=1; i<827; i++){
+   arr.push(i);
+}
 
 export default function SearchBar({ onSearch }) {
    const [id, setId] = useState("")
+   const [random, setRandom] = useState(arr)
+
 
    const handleChange = (e) => {
       setId(e.target.value)
    }
 
+   const handleRand=()=>{
+      const indiceRandom = randomCharacterId(random)
+      const valRandom = random[indiceRandom]
+
+      onSearch(valRandom)
+      setRandom(random.filter(e=>e!==valRandom))
+   }
+
    const handleSubmit = (e) => {
       e.preventDefault()
       onSearch(id)
+      setRandom(random.filter(elem=>elem!==id))
       setId("")
    }
 
@@ -20,7 +38,8 @@ export default function SearchBar({ onSearch }) {
 
       <Form onSubmit={handleSubmit}>
          <Input onChange={handleChange} type="text" placeholder="Ingresar Id" value={id} />
-         <Button><span>Agregar</span></Button>
+         <Button type='submit'><span>Agregar</span></Button>
+         <Span onClick={handleRand}> random</Span>
       </Form>
       </DivContainer>
    );
@@ -30,7 +49,7 @@ const DivContainer = styled.div`
    margin-top: 2em;
    width:60%;
    display: flex;
-   justify-content: flex-end;
+   justify-content: center;
 `
 
 const Form = styled.form`
@@ -40,7 +59,6 @@ const Form = styled.form`
    border: 3px solid #4d0080b5;
    box-shadow: 0px 0px 10px #a8d5ff;
    width: fit-content;
-
 `
 
 const Input = styled.input`
@@ -117,5 +135,19 @@ const Button = styled.button`
          background-clip: text;
          color: transparent;
       }
+   }
+`
+const Span = styled.span`
+   margin-left: 8px;
+   display: inline-block;
+   padding: 5px 10px;
+   border-radius: 3px;
+   border: 3px solid #a8d5ff;
+   color: #a8d5ff;
+   background-color: #4d0080;
+   &:hover{
+   border-color: #4d0080;
+   color: #4d0080;
+   background-color: #a8d5ff;
    }
 `
