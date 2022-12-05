@@ -11,25 +11,17 @@ export default class Form extends React.Component {
     this.errors = {}
   }
 
-  handleInputChange = (e) =>{ 
-    if(e.target.value === ""){
-      this.setState({
-        ...this.state, 
-        [e.target.name]: e.target.value,
-        errors: {...this.state.errors, [e.target.name]:e.target.value} 
-      })
-    }else {
+   handleInputChange = (e) =>{ 
       this.setState({
       ...this.state, 
       [e.target.name]: e.target.value,
-      errors:{...this.state.errors, ...validation({[e.target.name]: e.target.value})}
+      errors:{...validation({...this.state.errors,[e.target.name]: e.target.value})}
     })
-    }    
   }  
- 
+
   handleSubmit = (e) =>{
     e.preventDefault()
-    if(this.state.errors.username ==="" && this.state.errors.password ===""){
+    if(!Object.keys(this.state.errors).length){
       this.props.login({[e.target[0].name]:e.target[0].value, [e.target[1].name]:e.target[1].value})
     }else{
       alert("Usuario o contraseña inválidos")

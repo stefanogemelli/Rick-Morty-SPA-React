@@ -9,19 +9,18 @@ export function validation(userData) {
 
     if (!userReg.test(userData.username)) {
       err.username = "Ingrese un e-mail válido"
-    } else {
-      err.username = ""
     }
 
-  } else {
+  }
+
+  if (userData.password) {
 
     if (!passReg.test(userData.password)) {
       err.password = "Utilice al menos una letra, un número y de 6 a 10 caracteres"
-    } else {
-      err.password = ""
     }
 
   }
 
   return err
 }
+
