@@ -14,6 +14,7 @@ export default function NavBar({ onSearch, logout}) {
       <DivLinks>
         <DivNavLinks>
           <NavLink to="/home" className={s.navLink}>Home</NavLink>
+          <NavLink to="/favorites" className={s.navLink}>Favorites</NavLink>
           <NavLink to="/about" className={s.navLink}>About</NavLink>
         </DivNavLinks>
         <Span onClick={logout}>Logout</Span>

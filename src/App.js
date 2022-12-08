@@ -4,6 +4,8 @@ import NavBar from './components/NavBar/NavBar'
 import About from './components/About/About'
 import Detail from './components/Detail/Detail'
 import Form from './components/Form/Form'
+import Favorites from './components/Favorites/Favorites'
+import Error404 from './components/Error404/Error404'
 import React, { useState, useEffect } from 'react'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 // import img from "./images/bgDetail.jpg"
@@ -17,6 +19,7 @@ const DivApp = styled.div`
   position: relative;
   `
 /* background-image: url(${img}) */
+
 
 function App() {
   const [characters, setCharacters] = useState([])
@@ -78,11 +81,17 @@ function App() {
 
         <Route path='/detail/:detailId' element={<Detail />} />
 
+        <Route path='/favorites' element={<Favorites />} />
+
+        <Route path='/*' element={<Error404 />} />
+
       </Routes>
 
 
     </DivApp >
   )
 }
+
+
 
 export default App

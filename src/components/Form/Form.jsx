@@ -8,7 +8,7 @@ export default class Form extends React.Component {
   constructor(props){
     super(props)
     this.state = { username: '', password: '', errors:{} }
-    this.errors = {}
+    // this.errors = {}
   }
 
    handleInputChange = (e) =>{ 
