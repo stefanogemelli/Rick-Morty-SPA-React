@@ -6,13 +6,13 @@ import styled from 'styled-components'
 import { addFavorite, removeFavorite } from '../../redux/actions';
 
 
-function Card({ info, onClose, addFavorite, removeFavorite, myFavorites }) {
+function Card({ character, onClose, addFavorite, removeFavorite, myFavorites }) {
    const [isFav, setIsFav] = useState(false)
 
 
    useEffect(()=>{
       myFavorites.forEach(e => {
-         if(e.id === info.id){
+         if(e.id === character.id){
             setIsFav(true)
          }
       })
@@ -21,15 +21,15 @@ function Card({ info, onClose, addFavorite, removeFavorite, myFavorites }) {
    const handleFavorite = () => {
       if(isFav){
          setIsFav(false)
-         removeFavorite(info.id)
+         removeFavorite(character.id)
       }else{
          setIsFav(true)
-         addFavorite(info)
+         addFavorite(character)
       }
    }
 
    return (
-      <DivCard key={info.id}>
+      <DivCard key={character.id}>
          {
             isFav 
             ? (
@@ -39,18 +39,18 @@ function Card({ info, onClose, addFavorite, removeFavorite, myFavorites }) {
                <button onClick={handleFavorite}>🤍</button>
             )
          }
-         <ButtonCard onClick={() => onClose(info.id)}>X</ButtonCard>
+         <ButtonCard onClick={() => onClose(character.id)}>X</ButtonCard>
          <DivImg>
-            <img src={info.image} alt={info.name} />
+            <img src={character.image} alt={character.name} />
             <BgDark>
-               <Link to={`/detail/${info.id}`} >
+               <Link to={`/detail/${character.id}`} >
                <Span>Details...</Span>  
                </Link>
             </BgDark>
          </DivImg>
-               <H2Name>{info.name}</H2Name>
-         <H2Normal>{info.species}</H2Normal>
-         <H2Normal>{info.gender}</H2Normal>
+               <H2Name>{character.name}</H2Name>
+         <H2Normal>{character.species}</H2Normal>
+         <H2Normal>{character.gender}</H2Normal>
 
 
       </DivCard>

@@ -17,7 +17,7 @@ export default function Cards({ characters, onClose }) {
    return <Div>
       {
          Array.isArray(characters)
-            ? characters.map(e => <Card key={e.id} info={e} onClose={onClose} />)
+            ? characters.map(e => <Card key={e.id} character={e} onClose={onClose} />)
             : <h2>Sin cards</h2>
       }
    </Div>;

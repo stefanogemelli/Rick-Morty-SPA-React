@@ -68,7 +68,7 @@ function App() {
   return (
     <DivApp>
 
-      {pathname !== "/" ? <NavBar onSearch={onSearch} logout={logout} /> : null}
+      {pathname !== "/" && <NavBar onSearch={onSearch} logout={logout} />}
 
 
       <Routes>
