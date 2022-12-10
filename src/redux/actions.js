@@ -1,7 +1,7 @@
 export const ADD_FAVORITE = "ADD_PJ"
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE"
-export const FILTER = "FILTER"
-export const ORDER = "ORDER"
+export const ORDER_CARDS = "ORDER_CARDS"
+export const FILTER_FAVORITES = "FILTER_FAVORITES"
 
 
 export const addFavorite = (personaje) => {
@@ -18,16 +18,16 @@ export const removeFavorite = (id) => {
   }
 }
 
-export const filterCards = (status) => {
+export const filterFavorites = (gender) => {
   return {
-    type: FILTER,
-    payload: status
+    type: FILTER_FAVORITES,
+    payload: gender
   }
 }
 
 export const orderCards = (id) => {
   return {
-    type: ORDER,
+    type: ORDER_CARDS,
     payload: id
   }
 }

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
+import * as c from "../../variables"
 
 function randomCharacterId(arrRand){
    return Math.floor(Math.random()*(arrRand.length))
@@ -37,16 +38,16 @@ export default function SearchBar({ onSearch }) {
       <DivContainer>
 
       <Form onSubmit={handleSubmit}>
-         <Input onChange={handleChange} type="text" placeholder="Ingresar Id" value={id} />
-         <Button type='submit'><span>Agregar</span></Button>
-         <Span onClick={handleRand}> random</Span>
+         <Input onChange={handleChange} type="text" placeholder="Insert Id" value={id} />
+         <Button type='submit'>Add</Button>
+         <Span onClick={handleRand}>🎲🎲</Span>
       </Form>
       </DivContainer>
    );
 }
 const DivContainer = styled.div`
    /* border: 2px solid white; */
-   margin-top: 2em;
+   margin-top: 2.5rem;
    width:60%;
    display: flex;
    justify-content: center;
@@ -54,100 +55,88 @@ const DivContainer = styled.div`
 
 const Form = styled.form`
    display: flex;
-   padding: 1em 1.5em;
+   padding: 1.5rem 2.5rem;
    border-radius: 5px;
-   border: 3px solid #4d0080b5;
-   box-shadow: 0px 0px 10px #a8d5ff;
+   border: 1px solid ${c.TURQUEZA};
+   box-shadow: 0px 0px 12px ${c.VERDE2};
    width: fit-content;
+   align-items:center;
+   background-color: #1313132d;
+   backdrop-filter: blur(5px);
+   transition: .2s ease-in;
+   &:hover{
+      box-shadow: 0px 0px 16px ${c.VERDE2}, 0px 0px 0px 1px ${c.TURQUEZA};
+   }
 `
 
 const Input = styled.input`
-   width: 180px;
-   height: 1.5em;
-   font-size: 1.5em;
-   background-color: transparent;
+   width: 130px;
+   height: 3.4rem;
+   font-size: 2.2rem;
+   margin-right: 1.2rem;
+   background-color: #05050596;
+   color: ${c.VERDE1};
+   -webkit-text-stroke: .1px  ${c.TURQUEZA};
    outline: none;
    border: none;
-   &::placeholder {
-      background-color: #4d0080b5;
-      color: #a8d5ff;
-      padding: 5px;
-      width: 95%;
+   text-align: center;
+   border-bottom: 2px solid ${c.TURQUEZA};
+   box-shadow: 0px 1px  1px .5px ${c.VERDE1};
+
+   &::placeholder{
+      color: ${c.VERDE1};
+      -webkit-text-stroke: .4px ${c.TURQUEZA};
+      font-weight:300;
+      padding: 3px;
+      width: 70%;
+      box-sizing:border-box;
    }
    &:active{
-      background-color:#a8d5ff;
-      color: #4d0080b5;
+      background-color:#00b4cc61;
    }
 `
 
 const Button = styled.button`
-   margin-top: 3px;
-   height:fit-content;
-   padding:0;
-   margin-left:.2em;
-   display: flex;
-   align-items: center;
-   position: relative;
-   box-sizing: border-box;
-   color: #FFF;
-   background: #000;
-   background-clip: padding-box;
-   border: solid 3px transparent;
    border-radius: 4px;
-   font-size: 1.5em;
+   font-size: 2rem;
    font-weight:600;
-   color: transparent;
-   border: none;
-   transition:all 0.5s ease-in ;
-   &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -1;
-      margin: -5px;
-      border-radius: inherit;
-      background: linear-gradient(to bottom, #64cbff 0%, #79009e 50%);
-      transition: all 0.5s ease-in-out ;
-   }
-   & span{
-      background: linear-gradient(to bottom, #64cbff 0%, #79009e 50%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent; 
-      padding: 2px;
-      transition: all 2s ease-in-out ;
-   }
+   /* background: linear-gradient(145deg, #03030348, #00000048); */
+   background: #0e0e0e;
+   border: 2px solid #00b5cc;
+   border-right:none;
+   color: #00b5cc;
+   -webkit-text-stroke: .2px ${c.VERDE2};
+   border-radius: 3px;
+   padding: .7rem 1.5rem;
+   width: fit-content;
+   box-shadow: 1px 0px 2px ${c.TURQUEZA},
+   0px 0px 3px 1.5px${c.VERDE2};
+   transition: 0.1s;
    &:hover{
-   transition: all 0.5s ease-in ;
-
-      &:before {
-         transition: all 0.5s ease-in-out ;
-
-         background-image: linear-gradient(to bottom, #64cbff 40%, #79009e 100%);
-      }
-      & span{
-         transition: all 0.5s ease-in-out ;
-         background: linear-gradient(to bottom, #64cbff 40%, #79009e 100%);
-         -webkit-background-clip: text;
-         background-clip: text;
-         color: transparent;
-      }
+      box-shadow: 0px 0px 16px ${c.VERDE2}, 0px 0px 0px 1px ${c.VERDE1};
+      color: ${c.VERDE1};
+      background-color: #a4d02923;
    }
 `
 const Span = styled.span`
-   margin-left: 8px;
-   display: inline-block;
-   padding: 5px 10px;
+   letter-spacing:-1.2rem;
+   border-radius: 4px;
+   font-size: 2rem;
+   font-weight:600;
+   background: #0e0e0e;
+   border: 2px solid #00b5cc;
+   border-left: none;
+   color: #00b5cc;
+   -webkit-text-stroke: .2px ${c.VERDE2};
    border-radius: 3px;
-   border: 3px solid #a8d5ff;
-   color: #a8d5ff;
-   background-color: #4d0080;
+   padding: .5rem 1.7rem .5rem .5rem;
+   width: fit-content;
+   box-shadow: -1px 0px 2px ${c.TURQUEZA},
+   0px 0px 3px 1.5px${c.VERDE2};
+   transition: 0.1s;
    &:hover{
-   border-color: #4d0080;
-   color: #4d0080;
-   background-color: #a8d5ff;
+      box-shadow: 0px 0px 16px ${c.VERDE2}, 0px 0px 0px 1px ${c.VERDE1};
+      color: ${c.VERDE1};
+      background-color: #a4d02923;
    }
 `

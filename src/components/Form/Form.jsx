@@ -1,5 +1,7 @@
 import React from "react";
 import s from "./Form.module.css"
+import styled from "styled-components";
+import * as c from "../../variables"
 import { validation } from "./validation";
 
 
@@ -15,7 +17,7 @@ export default class Form extends React.Component {
       this.setState({
       ...this.state, 
       [e.target.name]: e.target.value,
-      errors:{...validation({...this.state.errors,[e.target.name]: e.target.value})}
+      errors: validation({...this.state.errors,[e.target.name]: e.target.value})
     })
   }  
 
@@ -59,7 +61,7 @@ export default class Form extends React.Component {
           <span className={`${s.span} ${this.state.errors.password ? s.visible : null }`}>La contraseña debe contener al menos 1 mayúscula, 1 minúscula, 1 numero y entre 6 y 10 caracteres</span>
 
 
-          <button className={s.login}>Login</button>
+          <Button >Login</Button>
         </form>
       </div>
     );
@@ -67,4 +69,25 @@ export default class Form extends React.Component {
 
 }
 
+const Button = styled.button`
+  background-color: #00000062;
+  width: 70%;
+  align-self:center;
+  font-size: 2rem;
+  padding: .3rem .7rem;
+  font-weight: 300;
+  color: ${c.VERDE2};
+  -webkit-text-stroke: .7px ${c.TURQUEZA};
+  text-decoration: 1.7px underline;
+  box-shadow: -1px -1px 2px 1px ${c.TURQUEZA}, 
+    -2px -2px 5px 1px ${c.VERDE2};
+
+&:hover{
+  color: ${c.VERDE1};
+  -webkit-text-strok: .7px #000000;
+  text-decoration-color: ${c.VERDE2};
+  box-shadow: 0px 0px 2px 1px ${c.TURQUEZA}, 
+  0px 0px 5px 1px ${c.VERDE2};
+}
+`
 

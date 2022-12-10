@@ -1,9 +1,14 @@
 .navLink {
-  /* border: 1px solid #f5f5f5; */
   margin-left: 10px;
-  color: #000;
-  -webkit-text-stroke: 1px #a8d5ff;
-  font-size: 2em;
+  font-weight: 400;
+  color: #00b5cc;
+  -webkit-text-stroke: .5px #00BD32;
+  font-size: 3rem;
+  text-decoration: none;
 }
 
-.navLink:hover {}
+.navLinkA {
+  text-decoration: none;
+}
+
+/* .navLink:hover {} */

@@ -9,7 +9,6 @@ import { addFavorite, removeFavorite } from '../../redux/actions';
 function Card({ character, onClose, addFavorite, removeFavorite, myFavorites }) {
    const [isFav, setIsFav] = useState(false)
 
-
    useEffect(()=>{
       myFavorites.forEach(e => {
          if(e.id === character.id){
@@ -39,7 +38,8 @@ function Card({ character, onClose, addFavorite, removeFavorite, myFavorites }) 
                <button onClick={handleFavorite}>🤍</button>
             )
          }
-         <ButtonCard onClick={() => onClose(character.id)}>X</ButtonCard>
+         {onClose && <ButtonCard onClick={() => onClose(character.id)}>X</ButtonCard>}
+         
          <DivImg>
             <img src={character.image} alt={character.name} />
             <BgDark>
@@ -76,7 +76,7 @@ export default connect(mapStateToProps,mapDispatchToProps)(Card)
 const DivCard = styled.div`
    z-index: 150;
    width: fit-content;
-   margin: 1em;
+   margin: 1rem;
    font-weight:700;  
    border: 2px #573784 solid;
    border-radius: 10px;
@@ -100,7 +100,7 @@ const ButtonCard = styled.button`
    color: #a8d5ff;
    border: 2px solid #a8d5ff;
    font-weight: 300;
-   font-size: 1.2em;
+   font-size: 2rem;
    position: absolute;
    top:-30px;
    left:50%;
@@ -128,8 +128,8 @@ const DivImg = styled.div`
 const BgDark = styled.div`
    position: absolute;
    width: 100%;
-   height: 2.2em;
-   bottom: -2.2em;
+   height: 2.2rem;
+   bottom: -2.2rem;
    background-color: #000000bc;
    transition: .1s ease-in-out;
    ${DivCard}:hover &{
@@ -141,7 +141,7 @@ const H2Name = styled.h2`
    align-self:center;
    color: #a8d5ff;
    font-weight: 800;
-   font-size: 1.8em;
+   font-size: 3rem;
    text-shadow: 0px 0px 2px #330056;
    @media (max-width: 500px){
       color:red;
@@ -152,12 +152,13 @@ const H2Normal = styled.h2`
    color: #e0e0e0;
    font-weight: 300;
    margin-bottom: 12px;
+   font-size:2rem;
    text-shadow: 0px 0px 2px white;
 `
 const Span = styled.span`
    width:100%;
    font-weight:400;
-   font-size:1.3em;
+   font-size:2rem;
    display: inline-block;
    color: #a8d5ff;
    background-color: #4d0080;
