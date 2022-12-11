@@ -37,7 +37,7 @@ export default function Detail() {
       <DivDetails>
         <H3>Status: {character.status}</H3>
         <H3>Gender: {character.gender}</H3>
-        <H3>Specie:<span style={{color:"blue"}}>{character.species}</span> </H3>
+        <H3>Specie: {character.species} </H3>
         <H3>Location: {character.location?.name}</H3>
         <H3>Origin: {character.origin?.name}</H3>
       </DivDetails>
@@ -51,7 +51,7 @@ const DivContainer = styled.div`
 /* margin-top: 30vh; */
   width: 100%;
   height: 80vh;
-  border: 2px solid white;
+  border: 2px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,17 +59,23 @@ const DivContainer = styled.div`
 const Div = styled.div`
   width: 1000px;
   height: 550px;
-  border: 2px solid white;
+  border: 2px solid green;
   display: flex;
+  align-items: center;
 `
 const DivDetails = styled.div`
-  padding: 2em;
   text-align:start;
-  margin-top: 2em;
+  border: 2px solid blue;
+  font-size: 1.5rem;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 3rem;
 `
 const DivImg = styled.div`
-  height: 100%;
-  width: 40%;
+  height: 80%;
+  width: 35%;
   display:flex;
   flex-direction: column;
   border: 2px solid white;
@@ -78,12 +84,13 @@ const DivImg = styled.div`
 const Img = styled.img`
   align-self: flex-start;
   width: 100%;
+  border-radius: 15px;
 `
 const H2Name = styled.h2`
   -webkit-text-stroke: 1px #0583a9;
   -webkit-text-fill-color: #6424a4;
   font-weight: 600;
-  font-size:3em;
+  font-size:4rem;
   margin-bottom: 1em;
 `
 

@@ -39,8 +39,8 @@ export default function SearchBar({ onSearch }) {
 
       <Form onSubmit={handleSubmit}>
          <Input onChange={handleChange} type="text" placeholder="Insert Id" value={id} />
-         <Button type='submit'>Add</Button>
-         <Span onClick={handleRand}>🎲🎲</Span>
+         <Add type='submit'>Add</Add>
+         <Random onClick={handleRand}>🎲🎲</Random>
       </Form>
       </DivContainer>
    );
@@ -73,70 +73,92 @@ const Input = styled.input`
    width: 130px;
    height: 3.4rem;
    font-size: 2.2rem;
+   font-weight: 400;
    margin-right: 1.2rem;
-   background-color: #05050596;
-   color: ${c.VERDE1};
-   -webkit-text-stroke: .1px  ${c.TURQUEZA};
+   background-color: #10101048;
+   color: ${c.TURQUEZA};
+   -webkit-text-stroke: .3px  ${c.VERDE2};
    outline: none;
    border: none;
    text-align: center;
-   border-bottom: 2px solid ${c.TURQUEZA};
-   box-shadow: 0px 1px  1px .5px ${c.VERDE1};
+   box-shadow: -1px 1px 2px 1px ${c.VERDE2};
+   box-shadow: -2px 2px 2px  ${c.TURQUEZA};
 
    &::placeholder{
-      color: ${c.VERDE1};
+      color: ${c.VERDE2};
       -webkit-text-stroke: .4px ${c.TURQUEZA};
       font-weight:300;
       padding: 3px;
       width: 70%;
       box-sizing:border-box;
+      opacity: .8;
    }
    &:active{
       background-color:#00b4cc61;
    }
+   &:focus{
+      background: linear-gradient(220.55deg, ${c.TURQUEZA} 0%, ${c.VERDE2} 10%, );
+
+   }
 `
 
-const Button = styled.button`
-   border-radius: 4px;
+const Add = styled.button`
+   background-color: #101010;
+   border: none;
    font-size: 2rem;
-   font-weight:600;
-   /* background: linear-gradient(145deg, #03030348, #00000048); */
-   background: #0e0e0e;
-   border: 2px solid #00b5cc;
-   border-right:none;
-   color: #00b5cc;
-   -webkit-text-stroke: .2px ${c.VERDE2};
-   border-radius: 3px;
-   padding: .7rem 1.5rem;
-   width: fit-content;
-   box-shadow: 1px 0px 2px ${c.TURQUEZA},
-   0px 0px 3px 1.5px${c.VERDE2};
-   transition: 0.1s;
-   &:hover{
-      box-shadow: 0px 0px 16px ${c.VERDE2}, 0px 0px 0px 1px ${c.VERDE1};
-      color: ${c.VERDE1};
-      background-color: #a4d02923;
+   padding: .5rem 1.2rem;
+   height: 3.5rem;
+   font-weight: 300;
+   color: ${c.VERDE2};
+   -webkit-text-stroke: .7px ${c.TURQUEZA};
+   text-decoration: 1.7px underline;
+   box-shadow: 0px 1px 2px 1px ${c.TURQUEZA}, 
+               0px 2px 5px 1px ${c.VERDE2};
+   transition: .1s;
+  &:hover{
+      -webkit-text-strok: .7px #000000;
+      text-shadow: 0px 0px 1px ${c.TURQUEZA},1px 1px 2px ${c.VERDE2};
+      box-shadow: 0px 1px 2px 2px ${c.TURQUEZA}, 
+                  0px 2px 5px 3px ${c.VERDE2};
    }
+  &:active{
+    box-shadow: 0px 1px 2px 2px ${c.TURQUEZA}, 
+                0px 2px 5px 3px ${c.VERDE2},
+                0px 1px 2px 1px ${c.TURQUEZA} inset, 
+                0px 1px 5px 2px ${c.VERDE2} inset;
+    -webkit-text-strok: none; 
+    text-shadow:none;
+  }
 `
-const Span = styled.span`
+const Random = styled.span`
    letter-spacing:-1.2rem;
-   border-radius: 4px;
+   background-color: #101010;
+   border: none;
    font-size: 2rem;
-   font-weight:600;
-   background: #0e0e0e;
-   border: 2px solid #00b5cc;
-   border-left: none;
-   color: #00b5cc;
-   -webkit-text-stroke: .2px ${c.VERDE2};
-   border-radius: 3px;
-   padding: .5rem 1.7rem .5rem .5rem;
-   width: fit-content;
-   box-shadow: -1px 0px 2px ${c.TURQUEZA},
-   0px 0px 3px 1.5px${c.VERDE2};
-   transition: 0.1s;
-   &:hover{
-      box-shadow: 0px 0px 16px ${c.VERDE2}, 0px 0px 0px 1px ${c.VERDE1};
-      color: ${c.VERDE1};
-      background-color: #a4d02923;
+   height: 3.5rem;
+   padding: .3rem 2rem;
+   padding-left: .5rem;
+   font-weight: 300;
+   color: ${c.VERDE2};
+   -webkit-text-stroke: .7px ${c.TURQUEZA};
+   box-shadow: 0px 1px 2px 1px ${c.TURQUEZA}, 
+               0px 2px 5px 1px ${c.VERDE2};
+   transition: .1s;
+   user-select:none;
+
+  &:hover{
+      -webkit-text-strok: .7px #000000;
+      text-shadow: 0px 0px 1px ${c.TURQUEZA},1px 1px 2px ${c.VERDE2};
+      box-shadow: 0px 1px 2px 2px ${c.TURQUEZA}, 
+                  0px 2px 5px 3px ${c.VERDE2};
    }
+  &:active{
+    box-shadow: 0px 1px 2px 2px ${c.TURQUEZA}, 
+                0px 2px 5px 3px ${c.VERDE2},
+                0px 1px 2px 1px ${c.TURQUEZA} inset, 
+                0px 1px 5px 2px ${c.VERDE2} inset;
+    -webkit-text-strok: none; 
+    text-shadow:none;
+  }
+
 `

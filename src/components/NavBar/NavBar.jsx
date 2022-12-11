@@ -58,23 +58,32 @@ const SpanLink = styled.span`
   /* text-decoration: none; */
   
 `
-const Logout = styled.span`
+const Logout = styled.button`
+  background-color: #101010;
+  border: none;
   align-self: flex-end;
   font-size: 2rem;
-  padding: .3rem .7rem;
+  padding: .4rem .8rem;
   font-weight: 300;
   color: ${c.VERDE2};
   -webkit-text-stroke: .7px ${c.TURQUEZA};
   text-decoration: 1.7px underline;
-  box-shadow: -1px -1px 2px 1px ${c.TURQUEZA}, 
-    -2px -2px 5px 1px ${c.VERDE2};
+  box-shadow: 0px 1px 2px 1px ${c.TURQUEZA}, 
+              0px 2px 5px 1px ${c.VERDE2};
   transition: .1s;
 
   &:hover{
-    color: ${c.VERDE1};
     -webkit-text-strok: .7px #000000;
-    text-decoration-color: ${c.VERDE2};
-    box-shadow: 0px 0px 2px 1px ${c.TURQUEZA}, 
-    0px 0px 5px 1px ${c.VERDE2};
+    text-shadow: 0px 0px 1px ${c.TURQUEZA},1px 1px 2px ${c.VERDE2};
+    box-shadow: 0px 1px 2px 2px ${c.TURQUEZA}, 
+                0px 2px 5px 3px ${c.VERDE2};
+  }
+  &:active{
+    box-shadow: 0px 1px 2px 1px ${c.TURQUEZA}, 
+                0px 2px 4px 2px ${c.VERDE2},
+                0px 1px 2px 1px ${c.TURQUEZA} inset, 
+                0px 1px 5px 2px ${c.VERDE2} inset;
+  -webkit-text-strok: none; 
+  text-shadow:none;
   }
 `

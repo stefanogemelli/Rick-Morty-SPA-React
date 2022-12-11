@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import * as c from "../../variables"
 import { addFavorite, removeFavorite } from '../../redux/actions';
 
 
@@ -28,32 +29,27 @@ function Card({ character, onClose, addFavorite, removeFavorite, myFavorites }) 
    }
 
    return (
-      <DivCard key={character.id}>
-         {
-            isFav 
-            ? (
-               <button onClick={handleFavorite}>❤️</button>
-            ) 
-            : (
-               <button onClick={handleFavorite}>🤍</button>
-            )
-         }
-         {onClose && <ButtonCard onClick={() => onClose(character.id)}>X</ButtonCard>}
-         
-         <DivImg>
-            <img src={character.image} alt={character.name} />
-            <BgDark>
-               <Link to={`/detail/${character.id}`} >
-               <Span>Details...</Span>  
-               </Link>
-            </BgDark>
-         </DivImg>
-               <H2Name>{character.name}</H2Name>
-         <H2Normal>{character.species}</H2Normal>
-         <H2Normal>{character.gender}</H2Normal>
+      <BgCard>
+         <DivCard key={character.id}>
 
+            {onClose && <ButtonCard onClick={() => onClose(character.id)}>X</ButtonCard>}
+            
+            <DivImg>
 
-      </DivCard>
+               {  fav(isFav,handleFavorite) }
+
+               <img src={character.image} alt={character.name} />
+            </DivImg>
+
+            <H2Name>{character.name}</H2Name>
+            <H2Normal>{character.species}</H2Normal>
+            <H2Normal>{character.gender}</H2Normal>
+            <Link to={`/detail/${character.id}`} >
+               <Details>Details...</Details>  
+            </Link>
+
+         </DivCard>
+      </BgCard>
    );
 }
 
@@ -72,48 +68,82 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapStateToProps,mapDispatchToProps)(Card)
 
+const BgCard = styled.div`
+   width: 100%;
+   height: 100%;
+   background-color: #4040405f;
+   backdrop-filter: blur(10px);
+   display:flex;
+   justify-content: center;
+   align-items:center;
+   border: 1px solid #0f0f0f;
+`
+
 
 const DivCard = styled.div`
    z-index: 150;
-   width: fit-content;
-   margin: 1rem;
+   width: 270px;
+   height: fit-content;
+   margin: 10px;
    font-weight:700;  
-   border: 2px #573784 solid;
-   border-radius: 10px;
-   background: #46006661;
-   backdrop-filter: blur(15px);
-   /* box-shadow: 0px 0px 10px 1px #573784; */
+   border-radius: 7px;
+   background: ${c.DARK};
+   backdrop-filter: blur(5px);
+   border: 2px solid ${c.VERDE2};
+   box-shadow: 0px 0px 7px 1px ${c.TURQUEZA};
    display: flex;
    flex-direction: column;
    overflow: hidden;
-   transition: .1s ease-in-out;
+   transition: .1s ease-in;
    &:hover{
-   box-shadow: 0px 0px 7px 3px #a8d5ff;
+      box-shadow: 0px 0px 5px 2px ${c.VERDE1},
+         0px 0px 10px 4px ${c.TURQUEZA};
    }
 `
+
+const Fav = styled.button`
+   background-color: transparent;
+   font-size: 2rem;
+   position: absolute;
+`
+function fav (isFav,handleFavorite) {
+   return ( isFav 
+   ? (
+      <Fav onClick={handleFavorite}>❤️</Fav>
+   ) 
+   : (
+      <Fav onClick={handleFavorite}>🤍</Fav>
+   )
+   )
+}
+
 const ButtonCard = styled.button`
    z-index:100;
    border-radius: 3px;
    align-self: flex-end;
-   background-color: #BE24F0;
    width: 30px;
-   color: #a8d5ff;
-   border: 2px solid #a8d5ff;
+   font-size: 2.2rem;
+   background-color: ${c.VERDE2};
+   color: ${c.DARK};
+   -webkit-text-stroke: .5px ${c.DARK};
+   box-shadow: 0px 0px 4px 2px ${c.DARK};
    font-weight: 300;
-   font-size: 2rem;
    position: absolute;
-   top:-30px;
+   top:-35px;
+   opacity:0;
    left:50%;
    transform: translateX(-50%);
-   transition: .1s ease-in-out;
+   transition: .1s;
    cursor:pointer;
    &:hover{
-      border-color: #BE24F0;
-      color:#BE24F0;
-      background-color:#a8d5ff;
+      color: ${c.VERDE2};
+      background-color: ${c.DARK};
+      -webkit-text-stroke: .5px ${c.TURQUEZA};
+      box-shadow: -1px -1px 2px 2px ${c.VERDE2};
    }
    ${DivCard}:hover & {
       top:1px;
+      opacity:100;
    }
 `
 const DivImg = styled.div`
@@ -125,55 +155,49 @@ const DivImg = styled.div`
    overflow: hidden;
 
 `
-const BgDark = styled.div`
-   position: absolute;
-   width: 100%;
-   height: 2.2rem;
-   bottom: -2.2rem;
-   background-color: #000000bc;
-   transition: .1s ease-in-out;
-   ${DivCard}:hover &{
-      bottom:0;
-   }
-`
 const H2Name = styled.h2`
    margin: 0;
    align-self:center;
-   color: #a8d5ff;
-   font-weight: 800;
    font-size: 3rem;
-   text-shadow: 0px 0px 2px #330056;
+   font-weight: 300;
+   color: ${c.TURQUEZA};
+   -webkit-text-stroke: .7px ${c.VERDE2};
    @media (max-width: 500px){
       color:red;
+   }
+   ${DivCard}:hover &{
+      color: ${c.VERDE1};
+      -webkit-text-stroke: 1px ${c.TURQUEZA};
    }
 `
 const H2Normal = styled.h2`
    margin: 0;
    color: #e0e0e0;
    font-weight: 300;
-   margin-bottom: 12px;
    font-size:2rem;
    text-shadow: 0px 0px 2px white;
 `
-const Span = styled.span`
-   width:100%;
+const Details = styled.span`
+   width:97%;
+   margin-top: 10px;
    font-weight:400;
    font-size:2rem;
    display: inline-block;
-   color: #a8d5ff;
-   background-color: #4d0080;
-   border: 2px solid #a8d5ff;
+   font-size: 2.2rem;
+   background-color: ${c.VERDE2};
+   color: ${c.DARK};
+   -webkit-text-stroke: .5px ${c.DARK};
+   box-shadow: 0px 0px 4px 2px ${c.DARK};
    border-radius: 3px;
    padding: 3px;
-   position:absolute;
-   bottom: -30px;
-   left: 50%;
-   transform: translateX(-50%);
+   margin-bottom:5px;
+   align-self:center;
    transition: .1s ease-in-out;
    &:hover{
-      color: #4d0080;
-      border-color: #4d0080;
-      background-color: #a8d5ff;
+      color: ${c.VERDE2};
+      background-color: ${c.DARK};
+      -webkit-text-stroke: .3px ${c.TURQUEZA};
+      box-shadow: 1px 1px 2px 2px ${c.VERDE2};
    }
    ${DivCard}:hover &{
       bottom: 4px;
