@@ -34,7 +34,7 @@ function Card({ character, onClose, addFavorite, removeFavorite, myFavorites }) 
 
             {onClose && <ButtonCard onClick={() => onClose(character.id)}>X</ButtonCard>}
             
-            <DivImg>
+            <DivImg onDoubleClick={handleFavorite}>
 
                {  fav(isFav,handleFavorite) }
 
@@ -103,8 +103,11 @@ const DivCard = styled.div`
 
 const Fav = styled.button`
    background-color: transparent;
-   font-size: 2rem;
+   font-size: 2.5rem;
+   border:none;
    position: absolute;
+   bottom:5%;
+   right:7%;
 `
 function fav (isFav,handleFavorite) {
    return ( isFav 

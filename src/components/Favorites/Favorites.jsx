@@ -3,11 +3,7 @@ import Card from "../Card/Card"
 import styled from "styled-components"
 import { orderCards, filterFavorites } from "../../redux/actions"
 
-
-
-
 function Favorites({ myFavorites, orderCards, filterFavorites }){
-
 
   const handleOrder = (e) => {
     orderCards(e.target.value)
@@ -16,7 +12,6 @@ function Favorites({ myFavorites, orderCards, filterFavorites }){
   const handleFilter = (e) => {
     filterFavorites(e.target.value)
   }
-
   return <>
 
       <Select onChange={handleOrder} >
@@ -61,7 +56,14 @@ export default connect(mapStateToProps,mapDispatchToProps)(Favorites)
 
 
 const Container = styled.div`
-  display:Flex;
+  width: 80%;
+  margin: auto;
+  margin-top: 5rem;
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  grid-auto-rows: 500px;
+  gap: 5px;
+  justify-items: center;
 `
 const Select = styled.select`
   color: black;

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
+import * as c from "../../variables"
 
 
 
 export default function Detail() {
   let { detailId } = useParams()
   const [character, setCharacter] = useState({})
-
 
 
   useEffect(() => {
@@ -31,15 +31,34 @@ export default function Detail() {
   return <DivContainer>
     <Div>
       <DivImg>
+        <BoxName>
+          <H2Name>{character.name}</H2Name>
+        </BoxName>
         <Img src={character.image} />
-        <H2Name>{character.name}</H2Name>
       </DivImg>
+
       <DivDetails>
-        <H3>Status: {character.status}</H3>
-        <H3>Gender: {character.gender}</H3>
-        <H3>Specie: {character.species} </H3>
-        <H3>Location: {character.location?.name}</H3>
-        <H3>Origin: {character.origin?.name}</H3>
+        <BoxH3>
+          <BgH3>
+            <H3>Status: {character.status}</H3>
+          </BgH3>
+
+          <BgH3>
+            <H3>Gender: {character.gender}</H3>
+          </BgH3>
+
+          <BgH3>
+          <H3>Specie: {character.species} </H3>
+          </BgH3>
+
+          <BgH3>
+          <H3>Location: {character.location?.name}</H3>
+          </BgH3>
+
+          <BgH3>
+          <H3>Origin: {character.origin?.name}</H3>
+          </BgH3>
+        </BoxH3>
       </DivDetails>
         
     </Div>
@@ -48,53 +67,82 @@ export default function Detail() {
 }
 
 const DivContainer = styled.div`
-/* margin-top: 30vh; */
   width: 100%;
   height: 80vh;
-  border: 2px solid red;
-  display: flex;
   flex-direction: column;
   align-items: center;
-`
-const Div = styled.div`
-  width: 1000px;
-  height: 550px;
-  border: 2px solid green;
-  display: flex;
-  align-items: center;
-`
-const DivDetails = styled.div`
-  text-align:start;
-  border: 2px solid blue;
-  font-size: 1.5rem;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
   padding: 3rem;
 `
-const DivImg = styled.div`
-  height: 80%;
-  width: 35%;
-  display:flex;
-  flex-direction: column;
-  border: 2px solid white;
-  justify-content: space-between;
-`
-const Img = styled.img`
-  align-self: flex-start;
-  width: 100%;
-  border-radius: 15px;
-`
-const H2Name = styled.h2`
-  -webkit-text-stroke: 1px #0583a9;
-  -webkit-text-fill-color: #6424a4;
-  font-weight: 600;
-  font-size:4rem;
-  margin-bottom: 1em;
+const Div = styled.div`
+  width: 80%;
+  margin: auto;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border: 5px solid red;
 `
 
+const DivImg = styled.div`
+  height: 100%;
+  width: 350px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${c.DARK};
+  border-radius:0px 15px;
+  border: 2px solid white;
+  overflow: hidden;
+  padding: 2rem;
+  padding-bottom: 3rem;
+`
+const Img = styled.img`
+  width: 100%;
+  border: 2px solid white;
+  border-radius:0px 10px;
+`
+
+const BoxName = styled.div`
+  width:100%;
+  margin-top: 2rem;
+  padding:1.5rem;
+  border-radius: 5px;
+  background-color: #ffffff10;
+`
+
+const H2Name = styled.h2`
+  font-weight: 300;
+  color: ${c.VERDE2};
+  -webkit-text-stroke: .7px ${c.TURQUEZA};
+  font-size:4rem;
+`
+
+const DivDetails = styled.div`
+  text-align:start;
+  height:80%;
+  padding: 2rem;
+  background-color: ${c.DARK};
+  z-index: -1;
+  position: absolute;
+  top:0;
+  left:-20px;
+  transition: 1s;
+  left: 350px;
+  border-radius: 0px 15px 15px 0px;
+`
+const BoxH3 = styled.div`
+  background-color: #ffffff10;
+  padding: 2rem;
+  
+`
 const H3 = styled.h3`
-  font-size: 2em;
-  margin-top: .7em;
+  font-size: 2.7rem;
+  font-weight: 300;
+  margin-top: 1.5rem;
+  color: #efefef;
+`
+const BgH3 = styled.div`
+  background-color: ${c.DARK};
+  padding: 1px;
+  padding-left: 10px;
+  margin: 5px 0px;
 `
