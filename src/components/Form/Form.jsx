@@ -84,12 +84,14 @@ const Button = styled.button`
               0px 2px 5px 1px ${c.VERDE2};
   transition: .1s;
   &:hover{
+    transform: scale(1.01);
     -webkit-text-strok: .7px #000000;
     text-shadow: 0px 0px 1px ${c.TURQUEZA},1px 1px 2px ${c.VERDE2};
     box-shadow: 0px 1px 2px 2px ${c.TURQUEZA}, 
                 0px 2px 5px 3px ${c.VERDE2};
   }
   &:active{
+    transform: scale(.97);
     box-shadow: 0px 1px 2px 1px ${c.TURQUEZA}, 
                 0px 2px 4px 2px ${c.VERDE2},
                 0px 1px 2px 1px ${c.TURQUEZA} inset, 

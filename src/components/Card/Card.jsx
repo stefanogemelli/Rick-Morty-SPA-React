@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import * as c from "../../variables"
 import { addFavorite, removeFavorite } from '../../redux/actions';
 
@@ -29,18 +29,17 @@ function Card({ character, onClose, addFavorite, removeFavorite, myFavorites }) 
    }
 
    return (
-      <BgCard>
          <DivCard key={character.id}>
 
             {onClose && <ButtonCard onClick={() => onClose(character.id)}>X</ButtonCard>}
             
             <DivImg onDoubleClick={handleFavorite}>
 
-               {  fav(isFav,handleFavorite) }
 
                <img src={character.image} alt={character.name} />
             </DivImg>
 
+               {  fav(isFav,handleFavorite) }
             <H2Name>{character.name}</H2Name>
             <H2Normal>{character.species}</H2Normal>
             <H2Normal>{character.gender}</H2Normal>
@@ -49,7 +48,6 @@ function Card({ character, onClose, addFavorite, removeFavorite, myFavorites }) 
             </Link>
 
          </DivCard>
-      </BgCard>
    );
 }
 
@@ -67,17 +65,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Card)
-
-const BgCard = styled.div`
-   width: 100%;
-   height: 100%;
-   background-color: #4040405f;
-   backdrop-filter: blur(10px);
-   display:flex;
-   justify-content: center;
-   align-items:center;
-   border: 1px solid #0f0f0f;
-`
 
 
 const DivCard = styled.div`
@@ -101,21 +88,48 @@ const DivCard = styled.div`
    }
 `
 
-const Fav = styled.button`
+const FavF = styled.button`
    background-color: transparent;
    font-size: 2.5rem;
    border:none;
    position: absolute;
-   bottom:5%;
-   right:7%;
+   bottom:25%;
+   right:3%;
+   transition: 0s;
+   text-shadow: 0px 1px 3px whitesmoke;
+   transform-origin: 50% 50%;
+   &:hover{
+      font-size: 2.7rem;
+      right:2.5%;
+      bottom: 24.5%;
+   }
 `
+
+const favAnimation = keyframes`
+   0% { transform: scale(1);}
+ 30% { transform: scale(.95);}
+ 40% { transform: scale(1.05);}
+ 100% { transform: scale(1);}
+`
+
+const FavT = styled.button`
+   background-color: transparent;
+   font-size: 3rem;
+   border:none;
+   position: absolute;
+   bottom:24%;
+   right:2%;
+   text-shadow: 0px 1px 3px whitesmoke;
+   animation: ${favAnimation} 1s infinite;
+`
+
 function fav (isFav,handleFavorite) {
    return ( isFav 
    ? (
-      <Fav onClick={handleFavorite}>❤️</Fav>
+      <FavT onClick={handleFavorite}>❤️</FavT>
    ) 
    : (
-      <Fav onClick={handleFavorite}>🤍</Fav>
+      <FavF onClick={handleFavorite}>🤍</FavF>
    )
    )
 }

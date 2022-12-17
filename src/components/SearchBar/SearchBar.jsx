@@ -46,11 +46,13 @@ export default function SearchBar({ onSearch }) {
    );
 }
 const DivContainer = styled.div`
-   /* border: 2px solid white; */
-   margin-top: 2.5rem;
-   width:60%;
+   align-self:center;
+   justify-self:center;
    display: flex;
    justify-content: center;
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
 `
 
 const Form = styled.form`
