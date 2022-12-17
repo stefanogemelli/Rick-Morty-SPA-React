@@ -36,6 +36,8 @@ export default class Form extends React.Component {
       <div className={s.divForm}>
         <form onSubmit={this.handleSubmit} className={s.form}>
           <div className={s.logo} ></div>
+          <span>User: hola@gmail.com</span>
+          <span>User: Hola123</span>
           <label className={s.label}>User</label>
           <input
             onChange={this.handleInputChange}
