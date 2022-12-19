@@ -20,11 +20,29 @@ export default function NavBar({ onSearch, logout}) {
         
         <DivNavLinks>
 
-          <NavLink to="/home" className={`${s.navLinkA}  ${s.active}`} ><SpanLink className={`${s.navLink} `}>Home</SpanLink></NavLink>
+          <NavLink to="/home" className={s.navLinkA} >
+            {({isActive})=>(
+            isActive 
+            ? <SpanLink className={`${s.navLink} ${s.active}`}>Home</SpanLink> 
+            : <SpanLink className={s.navLink}>Home</SpanLink>
+            )}
+            </NavLink>
 
-          <NavLink to="/favorites" className={s.navLinkA}><SpanLink className={s.navLink}>Favorites</SpanLink></NavLink>
+          <NavLink to="/favorites" className={s.navLinkA}>
+            {({isActive})=>(
+            isActive 
+            ? <SpanLink className={`${s.navLink} ${s.active}`}>Favorites</SpanLink> 
+            : <SpanLink className={s.navLink}>Favorites</SpanLink>
+            )}
+            </NavLink>
 
-          <NavLink to="/about" className={s.navLinkA}><SpanLink className={s.navLink}>About</SpanLink></NavLink>
+          <NavLink to="/about" className={s.navLinkA}>
+            {({isActive})=>(
+            isActive 
+            ? <SpanLink className={`${s.navLink} ${s.active}`}>About</SpanLink> 
+            : <SpanLink className={s.navLink}>About</SpanLink>
+            )}
+            </NavLink>
 
         </DivNavLinks>
 
@@ -82,13 +100,12 @@ const DivNavLinks = styled.div`
 
 `
 const SpanLink = styled.span`
-  /* text-decoration: none; */
+
   
 `
 const Logout = styled.button`
-  background-color: #101010;
+  background-color: transparent;
   border: none;
-  /* align-self: flex-start; */
   height: fit-content;
   font-size: 2rem;
   padding: .4rem .8rem;
@@ -96,23 +113,10 @@ const Logout = styled.button`
   line-height: 2rem;
   color: ${c.VERDE2};
   -webkit-text-stroke: .7px ${c.TURQUEZA};
-  /* text-decoration: 1.7px underline; */
-  /* box-shadow: 0px 1px 2px 1px ${c.TURQUEZA}, 
-              0px 2px 5px 1px ${c.VERDE2}; */
   transition: .1s;
 
   &:hover{
-    -webkit-text-strok: .7px #000000;
-    text-shadow: 0px 0px 1px ${c.TURQUEZA},1px 1px 2px ${c.VERDE2};
-    box-shadow: 0px 1px 2px 2px ${c.TURQUEZA}, 
-                0px 2px 5px 3px ${c.VERDE2};
+    color: #8ad029;
   }
-  &:active{
-    box-shadow: 0px 1px 2px 1px ${c.TURQUEZA}, 
-                0px 2px 4px 2px ${c.VERDE2},
-                0px 1px 2px 1px ${c.TURQUEZA} inset, 
-                0px 1px 5px 2px ${c.VERDE2} inset;
-  -webkit-text-strok: none; 
-  text-shadow:none;
-  }
+
 `

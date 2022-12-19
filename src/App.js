@@ -30,12 +30,16 @@ function App() {
 
 
   const [username, password] = ["hola@gmail.com", "Hola123"]
+
   const login = (userData) => {
+    console.log("login");
+
     if (userData.username === username && userData.password === password) {
       setAccess(true)
       navigate('/home')
     }
   }
+
   const logout = () => {
     setAccess(false)
   }

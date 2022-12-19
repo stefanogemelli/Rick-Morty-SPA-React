@@ -31,14 +31,14 @@ export default function Detail() {
   return <DivContainer>
     <Div>
       <DivImg>
+        <Img src={character.image} />
         <BoxName>
           <H2Name>{character.name}</H2Name>
         </BoxName>
-        <Img src={character.image} />
       </DivImg>
 
       <DivDetails>
-        <BoxH3>
+        {/* <BoxH3> */}
           <BgH3>
             <H3>Status: {character.status}</H3>
           </BgH3>
@@ -58,7 +58,7 @@ export default function Detail() {
           <BgH3>
           <H3>Origin: {character.origin?.name}</H3>
           </BgH3>
-        </BoxH3>
+        {/* </BoxH3> */}
       </DivDetails>
         
     </Div>
@@ -74,11 +74,12 @@ const DivContainer = styled.div`
   padding: 3rem;
 `
 const Div = styled.div`
-  width: 80%;
+  width: 60%;
   margin: auto;
   display: flex;
   position: relative;
   overflow: hidden;
+  height: 460px;
   border: 5px solid red;
 `
 
@@ -118,12 +119,12 @@ const H2Name = styled.h2`
 
 const DivDetails = styled.div`
   text-align:start;
-  height:80%;
+  height:92%;
   padding: 2rem;
   background-color: ${c.DARK};
   z-index: -1;
   position: absolute;
-  top:0;
+  top:4%;
   left:-20px;
   transition: 1s;
   left: 350px;
@@ -141,8 +142,9 @@ const H3 = styled.h3`
   color: #efefef;
 `
 const BgH3 = styled.div`
-  background-color: ${c.DARK};
+  background-color: #ffffff10;
   padding: 1px;
   padding-left: 10px;
   margin: 5px 0px;
+  margin-top: 1rem;
 `

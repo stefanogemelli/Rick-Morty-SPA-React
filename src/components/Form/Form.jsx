@@ -14,17 +14,25 @@ export default class Form extends React.Component {
   }
 
    handleInputChange = (e) =>{ 
-      this.setState({
-      ...this.state, 
-      [e.target.name]: e.target.value,
-      errors: validation({...this.state.errors,[e.target.name]: e.target.value})
-    })
+     this.setState({
+       ...this.state, 
+       [e.target.name]: e.target.value,
+       errors: validation({
+         username: this.state.username,
+         password: this.state.password,
+         [e.target.name]: e.target.value
+        })
+      })
   }  
 
   handleSubmit = (e) =>{
+    console.log("asdf");
     e.preventDefault()
     if(!Object.keys(this.state.errors).length){
-      this.props.login({[e.target[0].name]:e.target[0].value, [e.target[1].name]:e.target[1].value})
+
+      console.log("despues de login");
+      this.props.login({[e.target[0].name]:e.target[0].value, [e.target[1].name]:e.target[1].value}) 
+
     }else{
       alert("Usuario o contraseña inválidos")
     }

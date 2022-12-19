@@ -7,4 +7,3 @@ export const VERDE2 = "rgb(61, 120, 60)"
 export const DARK = "#151515"
 
 
-// rgb(61, 120, 60)
