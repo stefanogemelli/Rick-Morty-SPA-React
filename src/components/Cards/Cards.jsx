@@ -1,6 +1,24 @@
 import Card from '.././Card/Card';
 import styled from 'styled-components';
 
+
+
+export default function Cards({ characters, onClose }) {
+
+   return <BgContainer>
+      <CardsContainer>
+         {
+            Array.isArray(characters)
+               ? characters.map(e => <Card key={e.id} character={e} onClose={onClose} />)
+               : <h2>Sin cards</h2>
+         }
+      </CardsContainer>
+   </BgContainer>;
+}
+
+
+
+
 const BgContainer = styled.div`
    display: flex;
    width:100%;
@@ -15,19 +33,3 @@ const CardsContainer = styled.div`
    justify-items: center;
    
 `
-
-export default function Cards({ characters, onClose }) {
-
-
-   return <BgContainer>
-      <CardsContainer>
-         {
-            Array.isArray(characters)
-               ? characters.map(e => <Card key={e.id} character={e} onClose={onClose} />)
-               : <h2>Sin cards</h2>
-         }
-      </CardsContainer>
-   </BgContainer>;
-}
-
-

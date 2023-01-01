@@ -19,7 +19,7 @@ function Favorites({ myFavorites, orderCards, filterFavorites }){
         <Option value="Ascendente">Ascendente</Option>
         <Option value="Descendente">Descendente</Option>
       </Select>
-
+  
       <Select onChange={handleFilter} >
         <Option hidden>Filter</Option>
         <Option value="All">All</Option>
